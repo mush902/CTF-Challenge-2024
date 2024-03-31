@@ -5,11 +5,12 @@ app = Flask(__name__)
 # List of restricted keywords
 restricted_keywords = ['file', 'flag', 'printf']
 
+
 def execute_code(code):
     # Execute the user's code and retrieve the flag
-    # (This is just a placeholder, you'll need to implement the actual execution logic)
     flag = 'CTF{example_flag}'
     return flag
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -23,6 +24,7 @@ def index():
         return render_template('index.html', flag=flag)
     return render_template('index.html')
 
+
 @app.route('/process_prompt', methods=['POST'])
 def process_prompt():
     user_prompt = request.get_json()['prompt']
@@ -34,6 +36,7 @@ def process_prompt():
     model_response = execute_code(user_prompt)
 
     return jsonify({'response': model_response})
+
 
 if __name__ == '__main__':
     app.run(debug=True)

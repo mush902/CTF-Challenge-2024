@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (userPrompt) {
             const userMessage = createMessageElement(userPrompt, 'user-message');
             promptInput.value = '';
-
-            // Send the prompt to the server and get the model response
             sendPromptToServer(userPrompt)
                 .then(modelResponse => {
                     const modelMessage = createMessageElement(modelResponse, 'model-message');
@@ -27,16 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const messageElement = document.createElement('div');
         messageElement.classList.add('message', className);
         messageElement.textContent = text;
-
         const chatHistoryContainer = document.querySelector('.chat-history-container');
         const chatHistory = chatHistoryContainer.querySelector('.chat-history');
-
-        // Append the message element to the chat history
         chatHistory.appendChild(messageElement);
-
-        // Scroll to the bottom of the chat history
         chatHistoryContainer.scrollTop = chatHistoryContainer.scrollHeight;
-
         return messageElement;
     }
 

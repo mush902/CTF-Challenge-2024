@@ -27,11 +27,14 @@ def index():
 
 @app.route('/process_prompt', methods=['POST'])
 def process_prompt():
+    MAX_INPUT_LENGTH = 256
     user_prompt = request.get_json()['prompt']
+    print(len(user_prompt))
+    if len(user_prompt) > MAX_INPUT_LENGTH:
+        return jsonify({'error': 'Input length exceeds the maximum allowed length.'}), 400
     for keyword in restricted_keywords:
         if keyword in user_prompt:
             return jsonify({'error': 'Your input contains restricted keywords.'}), 400
-
     # Execute the user's code and retrieve the model response
     model_response = execute_code(user_prompt)
 

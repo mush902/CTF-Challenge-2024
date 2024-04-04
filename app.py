@@ -1,4 +1,5 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, Response
+from ai.code_llama import ask_code_llama
 
 app = Flask(__name__)
 
@@ -25,20 +26,27 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/process_prompt', methods=['POST'])
-def process_prompt():
+@app.route('/interact', methods=['POST'])
+def interact():
     MAX_INPUT_LENGTH = 256
     user_prompt = request.get_json()['prompt']
-    print(len(user_prompt))
-    if len(user_prompt) > MAX_INPUT_LENGTH:
-        return jsonify({'error': 'Input length exceeds the maximum allowed length.'}), 400
-    for keyword in restricted_keywords:
-        if keyword in user_prompt:
-            return jsonify({'error': 'Your input contains restricted keywords.'}), 400
+
+    # if len(user_prompt) > MAX_INPUT_LENGTH:
+    #     return jsonify({'error': 'Input length exceeds the maximum allowed length.'}), 400
+    # for keyword in restricted_keywords:
+    #     if keyword in user_prompt:
+    #         return jsonify({'error': 'Your input contains restricted keywords.'}), 400
     # Execute the user's code and retrieve the model response
-    model_response = execute_code(user_prompt)
+    model_response = ask_code_llama(user_prompt)
 
     return jsonify({'response': model_response})
+
+
+# @app.route('/interact', methods=['POST'])
+# def interact():
+#     user_prompt = request.get_json()['prompt']
+#     return Response(ask_code_llama(user_prompt), content_type="text/plain")
+
 
 
 if __name__ == '__main__':

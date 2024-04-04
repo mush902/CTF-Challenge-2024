@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function sendPromptToServer(prompt) {
         return new Promise((resolve, reject) => {
-            fetch('/process_prompt', {
+            fetch('/interact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

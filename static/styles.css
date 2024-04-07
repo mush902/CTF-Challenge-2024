@@ -177,3 +177,12 @@ p {
         transform: rotate(360deg);
     }
 }
+
+.chat-input-container button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .chat-input-container button:disabled:hover {
+    background-color: #4d2600;
+  }

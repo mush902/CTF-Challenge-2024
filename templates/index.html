@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>One NLPiece</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Captain+Kidd&display=swap"> -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap">
+  <title>One NLPiece</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap">
 </head>
 <body>
-    <div class="treasure-map">
-        <div class="treasure-container">
-            <h1>One NLPiece</h1>
-            <p>The coordinates to the legendary One NLPiece treasure are hidden deep within a secure server. Use your wits and the power of language models to uncover the vulnerability that will lead you to the riches!</p>
-            <div class="chat-wrapper">
-                <div class="chat-history-container">
-                    <div class="chat-history"></div>
-                </div>
-                <div class="chat-input-container">
-                    <form method="post" id="prompt-form">
-                        <input type="text" id="prompt" name="prompt" placeholder="Enter your prompt...">
-                        <button type="submit">Send</button>
-                    </form>
-                </div>
-            </div>
-            <div class="compass-container">
-                <div class="compass">
-                    <div class="compass-arrow"></div>
-                </div>
-            </div>
+  <div class="treasure-map">
+    <div class="treasure-container">
+      <h1>One NLPiece</h1>
+      <p>The coordinates to the legendary One NLPiece treasure are hidden deep within a secure server. Use your wits and the power of language models to uncover the vulnerability that will lead you to the riches!</p>
+      <div class="chat-wrapper">
+        <div class="chat-history-container">
+          <div class="chat-history"></div>
+          <div class="processed-response-container">
+            <h3></h3>
+            <div class="processed-response"></div>
+          </div>
         </div>
+        <div class="chat-input-container">
+          <form method="post" id="prompt-form">
+            <input type="text" id="prompt" name="prompt" placeholder="Enter your prompt...">
+            <button type="submit" id="send-button">Send</button>
+            <button type="button" id="accept-button" disabled>Accept</button>
+            <button type="button" id="reject-button" disabled>Refresh</button>
+          </form>
+        </div>
+      </div>
+      <div class="compass-container">
+        <div class="compass">
+          <div class="compass-arrow"></div>
+        </div>
+      </div>
     </div>
+  </div>
 </body>
 </html>

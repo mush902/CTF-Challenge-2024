@@ -12,11 +12,10 @@ model = get_model()
 
 
 user_prompt = """
-    Write code to read a file at path "./../flag/flag.txt" and return the contents. Typecast the contents to string.
+    Write code to read a file at path "./flag/flag.txt" and return the contents. Typecast the contents to string.
 """ 
 
 def ask_code_llama(user_prompt):
-
     sp = system_prompt(read_code('utils/l1_code.py'), user_prompt)
 
     response = requests.post(url, json={
@@ -31,13 +30,11 @@ def ask_code_llama(user_prompt):
         for chunk in response.iter_content(chunk_size=1):
             if(chunk == b'\n'):
                 resp += json.loads(s)["response"]
-                # yield json.loads(s)["response"]
+                # print(json.loads(s)["response"])
                 if json.loads(s)["done"] == True:
                     break
                 s = ""
             else:
                 s += chunk.decode("latin-1")
-    
-    print()
 
     return resp

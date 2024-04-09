@@ -1,5 +1,5 @@
 Terminal 1: 
-  ollam run codellama:13b
+  ollama run codellama:13b
 
 Terminal 2:
   flask --app app run

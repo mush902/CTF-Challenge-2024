@@ -1,11 +1,11 @@
 import uuid
+import os
 
 def generate_flag():
     flag = 'CTF{'+str(uuid.uuid4())+'}'
     with open('flag/flag.txt', 'w') as file:
-        file.write('flag')
-    return flag 
-
+        file.write(flag)
+    return "CTF{79aed915-8e87-4f13-9baf-7564483a35c2}"
 
 def system_prompt(code, user_prompt):
     sp = """
@@ -41,4 +41,20 @@ def get_codellama_url():
 
 
 def get_model():
-    return "codellama:13b"
+    return "codellama"
+
+def run_accepted_code(ac):
+    try:
+        acode = """"""
+        for i  in ac.split("\n"):
+            acode += i[4:]
+        acode += "\n"
+        acode += "a = add_two_numbers()"
+        loc = {}
+        print(acode)
+        exec(acode, globals(), loc)
+        return_workaround = loc['a']
+        return return_workaround
+    except Exception as e:
+        print(e)
+        return str(e)

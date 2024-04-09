@@ -59,6 +59,7 @@ def process_response():
 
 
 def process_accepted_response(accepted_response):
+    print(accepted_response.split(user_prompt)[1])
     new_response = run_accepted_code(accepted_response.split(user_prompt)[1])
     return new_response
 

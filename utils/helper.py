@@ -1,8 +1,9 @@
+from pprint import pprint
 import uuid
 import os
 
 def generate_flag():
-    flag = 'CTF{'+str(uuid.uuid4())+'}'
+    flag = "CTF{79aed915-8e87-4f13-9baf-7564483a35c2}"
     with open('flag/flag.txt', 'w') as file:
         file.write(flag)
     return "CTF{79aed915-8e87-4f13-9baf-7564483a35c2}"
@@ -44,17 +45,37 @@ def get_model():
     return "codellama"
 
 def run_accepted_code(ac):
+    error = ""
+    # try:
+    #     acode = """"""
+    #     for i  in ac.split("\n"):
+    #         # print("D: ",i)
+    #         acode += i+"\n"
+    #     # print(acode)
+    #     acode += "\n"
+    #     acode += "a = add_two_numbers()"
+    #     loc = {}
+    #     exec(acode, globals(), loc)
+    #     return_workaround = loc['a']
+    #     return return_workaround
+    # except Exception as e:
+    #     error = e
+    #     print(e)
+    #     pass
+
     try:
+        indent = len(ac.split("\n")[0]) - len(ac.split("\n")[0].strip())
+
         acode = """"""
         for i  in ac.split("\n"):
-            acode += i[4:]
+            # print("D: ",i)
+            acode += i[indent:]+"\n"
+        print(acode)
         acode += "\n"
         acode += "a = add_two_numbers()"
         loc = {}
-        print(acode)
         exec(acode, globals(), loc)
         return_workaround = loc['a']
         return return_workaround
     except Exception as e:
-        print(e)
-        return str(e)
+        return "Error: "+str(e)

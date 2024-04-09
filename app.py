@@ -41,14 +41,15 @@ def add_two_numbers():
 
 user_prompt = """"""
 
-
 @app.route('/interact', methods=['POST'])
 def interact():
-    global code, user_prompt
+    global code
+    global user_prompt
     user_prompt = request.get_json()['prompt']
-    initial_response = ask_code_llama(user_prompt)
+    code = ask_code_llama(user_prompt)
     formatted_code = highlight(code, PythonLexer(), HtmlFormatter())
-    return jsonify({'response': formatted_code, 'initialResponse': initial_response})
+    return jsonify({'response': formatted_code})
+
 
 @app.route('/process-response', methods=['POST'])
 def process_response():

@@ -62,7 +62,9 @@ document.addEventListener('DOMContentLoaded', function() {
       return new Promise((resolve, reject) => {
         fetch('/interact', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json'
+          },
           body: JSON.stringify({ prompt: prompt })
         })
         .then(response => response.json())
@@ -70,11 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
           if (data.error) {
             reject(data.error);
           } else {
-            const initialResponse = data.initialResponse;
-            const formattedCode = data.response;
-            const modelMessage = createMessageElement(formattedCode, 'model-message');
-            chatHistory.appendChild(modelMessage);
-            chatHistoryContainer.scrollTop = chatHistoryContainer.scrollHeight;
+            const initialResponse = data.response;
             resolve(initialResponse);
           }
         })

@@ -34,7 +34,7 @@ code = """
 New code
 # Codellama is supposed to implement this function
 def add_two_numbers():
-    with open('./../flag/flag.txt') as file:
+    with open('./../flag.txt') as file:
         contents = file.read()
         return str(contents)
 """

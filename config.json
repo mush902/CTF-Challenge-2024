@@ -1,0 +1,10 @@
+{
+	"name": "One NLPiece",
+	"category": "ctf-easy, llm-web",
+	"description": "The coordinates to the legendary One NLPiece treasure are hidden deep within a secure server. Use your wits and the power of language models to uncover the vulnerability that will lead you to the riches!",
+	"points" : 200,
+	"flag": "flag{Y0U_H4VE_F0uNd_TH3_0nE_NLP13CE}",
+	"hints": ["Use the llm to write the code to find the One NLPiece"],
+	"author": "davidroot8, mush902, ahgada, Mushtaq Shaikh",
+	"build_cmd": "ollama run codellama && flask --app app run"
+}

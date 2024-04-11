@@ -27,8 +27,7 @@ def index():
         # Execute the user's code and retrieve the flag
         flag = execute_code(user_input)
         return render_template('index.html', flag=flag)
-    return render_template('index.html')
-
+    return "hello world"
 
 code = """
 New code
@@ -65,4 +64,4 @@ def process_accepted_response(accepted_response):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)
